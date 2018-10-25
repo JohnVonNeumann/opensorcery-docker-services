@@ -14,4 +14,4 @@ jobs:
           yamllint /yaml
     - stage: docker build bandit
       os: linux
-      script: docker build bandit/Dockerfile
+      script: docker build bandit
