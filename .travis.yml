@@ -1,0 +1,20 @@
+---
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: code linting
+      script:
+        - docker run --rm -i hadolint/hadolint < dockerfile
+        - >
+          docker run --rm
+          -v ${pwd}:/yaml
+          sdesbure/yamllint
+          yamllint /yaml
+    - stage: docker-compose up --build
+      os: linux
+      script: docker-compose up -d --build
+
+# after_success:
+# - coveralls
