@@ -6,15 +6,12 @@ jobs:
   include:
     - stage: code linting
       script:
-        - docker run --rm -i hadolint/hadolint < dockerfile
+        - docker run --rm -i hadolint/hadolint < bandit/Dockerfile
         - >
           docker run --rm
           -v ${PWD}:/yaml
           sdesbure/yamllint
           yamllint /yaml
-    - stage: docker-compose up --build
+    - stage: docker build bandit
       os: linux
-      script: docker-compose up -d --build
-
-# after_success:
-# - coveralls
+      script: docker build bandit/Dockerfile
