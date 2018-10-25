@@ -9,7 +9,7 @@ jobs:
         - docker run --rm -i hadolint/hadolint < dockerfile
         - >
           docker run --rm
-          -v ${pwd}:/yaml
+          -v ${PWD}:/yaml
           sdesbure/yamllint
           yamllint /yaml
     - stage: docker-compose up --build
