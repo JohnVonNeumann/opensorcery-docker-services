@@ -1,0 +1,17 @@
+---
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: code linting
+      script:
+        - docker run --rm -i hadolint/hadolint < bandit/Dockerfile
+        - >
+          docker run --rm
+          -v ${PWD}:/yaml
+          sdesbure/yamllint
+          yamllint /yaml
+    - stage: docker build bandit
+      os: linux
+      script: docker build bandit
