@@ -1,24 +1,27 @@
-# opensorcery/bandit
-## Bandit is a tool designed to find common security issues in Python code.
+# opensorcery/npm-package-json-lint
+## A package.json linter for Node projects.
 
 ### Overview
 
-[Bandit is a tool designed to find common security issues in Python code. To do this Bandit processes each file, builds an AST from it, and runs appropriate plugins against the AST nodes. Once Bandit has finished scanning all the files it generates a report.](https://github.com/PyCQA/bandit#overview)
-
-Bandit was originally developed within the OpenStack Security Project and later rehomed to PyCQA.
+[npm-package-json-lint helps enforce standards for your package.json file. Currently it can check for:](https://www.npmjs.com/package/npm-package-json-lint)
+* validity of data types in nodes. Ex: name should always be a string.
+* whether a string is a lowercase
+* whether a version number is a valid
+* the presence of a given module
+* the presence of a pre-release version of a module
 
 ### Usage
 
 #### Pull image
 
 ```
-docker pull opensorcery/bandit
+docker pull opensorcery/npm-package-json-lint
 ```
 
 #### Run container
 
 ```
-docker run --rm -v ${PWD}:/code opensorcery/bandit -r /code
+docker run --rm -v ${PWD}:/code opensorcery/npm-package-json-lint /code
 ```
 
 #### Run from within Travis CI 
@@ -31,6 +34,6 @@ jobs:
         - >
           docker run --rm
           -v ${PWD}:/code
-          opensorcery/bandit -r
+          opensorcery/npm-package-json-lint
           /code
 ```
