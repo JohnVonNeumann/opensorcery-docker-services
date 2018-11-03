@@ -6,12 +6,21 @@ jobs:
   include:
     - stage: code linting
       script:
-        - docker run --rm -i hadolint/hadolint < bandit/Dockerfile
+        - >
+          docker run --rm -i
+          hadolint/hadolint
+          < bandit/Dockerfile
+        - >
+          docker run --rm -i
+          hadolint/hadolint
+          < npm-package-json-lint/Dockerfile
         - >
           docker run --rm
           -v ${PWD}:/yaml
           sdesbure/yamllint
           yamllint /yaml
-    - stage: docker build bandit
+    - stage: docker build services
       os: linux
-      script: docker build bandit
+      script:
+        - docker build bandit
+        - docker build npm-package-json-lint
