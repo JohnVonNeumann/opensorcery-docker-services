@@ -35,5 +35,4 @@ jobs:
           docker run --rm
           -v ${PWD}:/code
           opensorcery/npm-package-json-lint
-          /code
 ```
